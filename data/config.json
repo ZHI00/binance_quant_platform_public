@@ -1,0 +1,9 @@
+{
+  "binance_api_key": "",
+  "binance_api_secret": "",
+  "ai_model": "deepseek-ai/DeepSeek-V3.2-Exp",
+  "ai_base_url": "https://api.siliconflow.cn/v1",
+  "ai_api_key": "",
+  "initial_capital": 50,
+  "admin_api_url": "http://9527long.xyz/api"
+}

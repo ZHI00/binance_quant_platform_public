@@ -1,0 +1,51 @@
+{
+  "name": "三连阳策略",
+  "description": "连续三根阳线时买入",
+  "modules": [
+    {
+      "type": "symbol",
+      "name": "标的选择",
+      "config": {
+        "mode": "fixed",
+        "symbols": ["BTCUSDT", "ETHUSDT"],
+        "top_n": 10,
+        "min_volume": 0,
+        "blacklist": []
+      }
+    },
+    {
+      "type": "kline",
+      "name": "获取行情",
+      "config": {
+        "interval": "15m",
+        "limit": 50
+      }
+    },
+    {
+      "type": "custom_strategy",
+      "name": "三连阳判断",
+      "config": {
+        "code": "# 检查最近三根K线是否都是阳线\nif len(klines) < 3:\n    return False\n\nk1 = klines[-1]\nk2 = klines[-2]\nk3 = klines[-3]\n\n# 三根都是阳线（收盘价 > 开盘价）\nif k1['close'] > k1['open'] and k2['close'] > k2['open'] and k3['close'] > k3['open']:\n    logger.info(f\"三连阳信号！\")\n    return True\n\nreturn False"
+      }
+    },
+    {
+      "type": "trade",
+      "name": "交易执行",
+      "config": {
+        "position_size": 100,
+        "max_positions": 3,
+        "hold_bars": 5,
+        "order_prefix": "THREE_UP",
+        "feishu_webhook": ""
+      }
+    },
+    {
+      "type": "timer",
+      "name": "定时启动",
+      "config": {
+        "interval": "15m",
+        "offset_seconds": 5
+      }
+    }
+  ]
+}

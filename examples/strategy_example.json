@@ -1,0 +1,68 @@
+{
+  "name": "示例策略：RSI+MACD多头策略",
+  "description": "当RSI超卖且MACD金叉时买入，持仓10根K线后卖出",
+  "modules": [
+    {
+      "type": "symbol",
+      "name": "标的选择",
+      "config": {
+        "mode": "top_gainers",
+        "top_n": 10,
+        "min_volume": 10000000,
+        "blacklist": []
+      }
+    },
+    {
+      "type": "kline",
+      "name": "获取行情",
+      "config": {
+        "interval": "15m",
+        "limit": 100
+      }
+    },
+    {
+      "type": "indicator",
+      "name": "RSI指标",
+      "config": {
+        "indicator_type": "RSI",
+        "period": 14
+      }
+    },
+    {
+      "type": "indicator",
+      "name": "MACD指标",
+      "config": {
+        "indicator_type": "MACD",
+        "fast_period": 12,
+        "slow_period": 26,
+        "signal_period": 9
+      }
+    },
+    {
+      "type": "custom_strategy",
+      "name": "自定义策略",
+      "config": {
+        "code": "# RSI超卖且MACD金叉\nrsi = indicators.get('rsi', 50)\nmacd = indicators.get('macd', 0)\nmacd_signal = indicators.get('macd_signal', 0)\nmacd_hist = indicators.get('macd_hist', 0)\n\n# RSI < 30 表示超卖\n# MACD柱状图 > 0 表示金叉\nif rsi < 30 and macd_hist > 0:\n    logger.info(f\"买入信号: RSI={rsi:.2f}, MACD_HIST={macd_hist:.4f}\")\n    return True\n\nreturn False"
+      }
+    },
+    {
+      "type": "trade",
+      "name": "交易执行",
+      "config": {
+        "position_size": 100,
+        "max_positions": 5,
+        "hold_bars": 10,
+        "order_prefix": "RSI_MACD",
+        "feishu_webhook": ""
+      }
+    },
+    {
+      "type": "timer",
+      "name": "定时启动",
+      "config": {
+        "interval": "15m",
+        "offset_seconds": 5
+      }
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "modules": [
+    {
+      "config": {
+        "custom_symbol": "BTCUSDT",
+        "interval": "5m",
+        "limit": 60,
+        "source_type": "custom_symbol"
+      },
+      "icon": "chart",
+      "name": "获取行情",
+      "type": "kline"
+    },
+    {
+      "config": {
+        "code": "# 当前是阳线 LONG\n# 当前是阳线 SHORT\n# if klines_BTCUSDT_5m[-1]['close']>klines_BTCUSDT_5m[-1]['open']:\n#     return \"LONG\"\n# if klines_BTCUSDT_5m[-1]['close']<klines_BTCUSDT_5m[-1]['open']:\n#     return \"SHORT\"\n\n# return None\n\nreturn \"LONG\""
+      },
+      "icon": "edit",
+      "name": "自定义策略",
+      "type": "custom_strategy"
+    },
+    {
+      "config": {
+        "blacklist": [],
+        "min_volume": 30000000,
+        "mode": "top_gainers",
+        "symbols": [
+          "BTCUSDT"
+        ],
+        "top_n": 10
+      },
+      "icon": "coin",
+      "name": "标的选择",
+      "type": "symbol"
+    },
+    {
+      "config": {
+        "custom_symbol": "",
+        "interval": "5m",
+        "limit": 60,
+        "source_type": "symbol_array"
+      },
+      "icon": "chart",
+      "name": "获取行情",
+      "type": "kline"
+    },
+    {
+      "config": {
+        "data_source": "klines_5m",
+        "fast_period": 12,
+        "indicator_type": "EMA",
+        "period": 20,
+        "signal_period": 9,
+        "slow_period": 26,
+        "std_dev": 2
+      },
+      "icon": "data-analysis",
+      "name": "技术指标",
+      "type": "indicator"
+    },
+    {
+      "config": {
+        "code": "# 收盘大于ema 且 阳线 long\n# 收盘小于ema 且 阴线 short\nif klines_5m[-1]['close']>indicators['ema_5m'][-1] and klines_5m[-1]['close']>klines_5m[-1]['open']:\n    return \"LONG\"\n\nif klines_5m[-1]['close']<indicators['ema_5m'][-1] and klines_5m[-1]['close']<klines_5m[-1]['open']:\n    return \"SHORT\"\n\nreturn None"
+      },
+      "icon": "edit",
+      "name": "自定义策略",
+      "type": "custom_strategy"
+    },
+    {
+      "config": {
+        "long_required_confidence": [
+          "HIGH"
+        ],
+        "long_required_signal": [
+          "BUY"
+        ],
+        "prompt": "你是一个专业的加密货币交易分析师。请基于以下K线数据进行分析：\n\n【K线数据 (BTCUSDT_5m)】\n{k_lines.BTCUSDT_5m}\n\n【K线数据 (5m)】\n{k_lines.5m}\n\n【技术指标】\n5m ema： {indicators.ema_5m}\n\n【分析要求】\n1. 基于K线趋势给出交易信号: BUY(买入) / SELL(卖出) / HOLD(观望)\n2. 简要分析理由（考虑趋势连续性、支撑阻力、成交量等因素）\n3. 评估信号置信程度: HIGH(高) / MEDIUM(中) / LOW(低)\n\n请用以下JSON格式回复：\n{\n  \"signal\": \"BUY|SELL|HOLD\",\n  \"reason\": \"分析理由\",\n  \"confidence\": \"HIGH|MEDIUM|LOW\"\n}",
+        "short_required_confidence": [],
+        "short_required_signal": [],
+        "system_prompt": "您是一位急需资金的交易员，你现在需要从加密货币交易市场赚取足够的金钱来改善生活，专注于趋势分析。请结合K线形态和技术指标做出判断。"
+      },
+      "icon": "magic-stick",
+      "name": "AI筛选",
+      "type": "ai_filter"
+    },
+    {
+      "config": {
+        "cooldown_minutes": 0,
+        "feishu_webhook": "",
+        "hold_bars": 1,
+        "max_positions": 1,
+        "order_prefix": "QUANT",
+        "position_size": 6,
+        "stop_loss_ratio": 10,
+        "take_profit_ratio": 5
+      },
+      "icon": "shopping-cart",
+      "name": "交易执行",
+      "type": "trade"
+    },
+    {
+      "config": {
+        "interval": "5m",
+        "offset_seconds": 5
+      },
+      "icon": "timer",
+      "name": "定时启动",
+      "type": "timer"
+    }
+  ]
+}

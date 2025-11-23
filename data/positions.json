@@ -1,0 +1,111 @@
+{
+  "current": [],
+  "history": [
+    {
+      "symbol": "BANANAS31USDT",
+      "entry_price": 0.003876,
+      "exit_price": 0.00407,
+      "quantity": 1548.0,
+      "pnl": 0.300312,
+      "entry_time": "2025-11-17T11:29:56.859342",
+      "exit_time": "2025-11-17T11:30:25.040000",
+      "hold_bars": 1,
+      "exit_reason": "系统检测到仓位已平",
+      "client_order_id": "QUANT_BANANAS31USDT_1763350196760",
+      "order_id": 1255467391
+    },
+    {
+      "symbol": "BANANAS31USDT",
+      "positionSide": "LONG",
+      "entry_time": "2025-11-17T11:44:57.927789",
+      "entry_price": 0.004219,
+      "quantity": 1422.0,
+      "order_id": 1255987271,
+      "client_order_id": "QUANT_BANANAS31USDT_1763351097845",
+      "hold_bars": 1,
+      "max_hold_bars": 1,
+      "take_profit_ratio": 5,
+      "stop_loss_ratio": 10,
+      "stop_loss_order_ids": [
+        1255987649
+      ],
+      "take_profit_order_ids": [
+        1255988866
+      ],
+      "exit_time": "2025-11-17T11:49:55.704741",
+      "exit_price": 0.004202,
+      "exit_reason": "到期",
+      "pnl": -0.02
+    },
+    {
+      "symbol": "KITEUSDT",
+      "entry_price": 0.09298,
+      "exit_price": 0.09299,
+      "quantity": 65.0,
+      "pnl": 0.0006500000000006501,
+      "entry_time": "2025-11-17T11:49:58.868888",
+      "exit_time": "2025-11-17T11:50:42.366136",
+      "hold_bars": 1,
+      "exit_reason": "手动平仓",
+      "client_order_id": "QUANT_KITEUSDT_1763351398744",
+      "order_id": 334701206,
+      "positionSide": "LONG"
+    },
+    {
+      "symbol": "NILUSDT",
+      "entry_price": 0.2294,
+      "exit_price": 0.229,
+      "quantity": 26.2,
+      "pnl": 0.010479999999999573,
+      "entry_time": "2025-11-17T11:54:57.659692",
+      "exit_time": "2025-11-17T11:56:02.720832",
+      "hold_bars": 1,
+      "exit_reason": "手动平仓",
+      "client_order_id": "QUANT_NILUSDT_1763351697481",
+      "order_id": 636033261,
+      "positionSide": "SHORT"
+    },
+    {
+      "symbol": "RESOLVUSDT",
+      "entry_price": 0.18324,
+      "exit_price": 0.18324,
+      "quantity": 33.0,
+      "pnl": 0.0,
+      "entry_time": "2025-11-17T12:19:57.134316",
+      "exit_time": "2025-11-17T12:19:58.364000",
+      "hold_bars": 1,
+      "exit_reason": "系统检测到仓位已平",
+      "client_order_id": "QUANT_RESOLVUSDT_1763353197043",
+      "order_id": 1589680918,
+      "positionSide": "SHORT"
+    },
+    {
+      "symbol": "XANUSDT",
+      "entry_price": 0.04046,
+      "exit_price": 0.04058,
+      "quantity": 148.0,
+      "pnl": -0.017759999999999276,
+      "entry_time": "2025-11-19T17:29:57.792176",
+      "exit_time": "2025-11-19T17:33:34.362763",
+      "hold_bars": 1,
+      "exit_reason": "手动平仓",
+      "client_order_id": "QUANT_XANUSDT_1763544597591",
+      "order_id": 375390523,
+      "positionSide": "SHORT"
+    },
+    {
+      "symbol": "SKYAIUSDT",
+      "entry_price": 0.02234,
+      "exit_price": 0.02236,
+      "quantity": 269.0,
+      "pnl": -0.005380000000000714,
+      "entry_time": "2025-11-19T17:39:57.540204",
+      "exit_time": "2025-11-19T17:40:28.327733",
+      "hold_bars": 1,
+      "exit_reason": "手动平仓",
+      "client_order_id": "QUANT_SKYAIUSDT_1763545197456",
+      "order_id": 358857258,
+      "positionSide": "SHORT"
+    }
+  ]
+}
